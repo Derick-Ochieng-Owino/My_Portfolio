@@ -220,6 +220,9 @@ input[type="button"]:focus:hover {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    
+    display: flex;
+    flex-direction: column;
 }
 
 .footer-left {

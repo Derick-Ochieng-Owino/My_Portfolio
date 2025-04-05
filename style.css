@@ -491,6 +491,10 @@ button:hover{
     background: #8b6060; /* C - Gray */
 }
 
+.card:nth-child(9) .progress-bar {
+    background: #3b1797; /* C - Gray */
+}
+
 /* Percentage text */
 .progress-text {
     font-size: 12px;

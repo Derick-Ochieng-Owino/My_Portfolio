@@ -57,3 +57,35 @@ document.addEventListener("DOMContentLoaded", function() {
         observer.observe(card);
 });
 });
+
+
+const keychain = document.getElementById("keychain-mount");
+
+let angle = 0;
+let velocity = 0;
+let gravity = 0.03;
+let damping = 0.995;
+let maxAngle = 1.1; // ~75 degrees
+
+function animate() {
+  velocity += -gravity * Math.sin(angle);
+  angle += velocity;
+  velocity *= damping;
+
+  keychain.style.transform = `rotate(${angle}rad)`;
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+keychain.addEventListener("click", (e) => {
+  const rect = keychain.getBoundingClientRect();
+  const clickX = e.clientX - rect.left;
+
+  if (clickX < rect.width / 2) {
+    velocity = 0.1;  // swing right
+  } else {
+    velocity = -0.1; // swing left
+  }
+});

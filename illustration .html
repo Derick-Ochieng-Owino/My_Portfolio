@@ -4,99 +4,11 @@
   <meta charset="UTF-8">
   <title>Swinging Keychain</title>
   <style>
-    .pendulum {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform-origin: top center;
-  cursor: pointer;
-  will-change: transform;
-}
 
-.chain {
-  width: 60px;
-  height: auto;
-  display: block;
-  pointer-events: none; /* ensures taps hit pendulum */
-}
-
-.tag {
-  width: 120px;
-  height: 160px;
-  border: 4px solid grey;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  overflow: hidden;
-}
-
-.tag img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
 
   </style>
 </head>
 <body>
-
-  <script>
-
-(function () {
-  const pendulum = document.getElementById("keychain-pendulum");
-  if (!pendulum) return;
-
-  const maxAngle = 1.2;          // radians (~34°) maximum initial push
-  const gravity = 0.035;         // higher = faster swing back
-  const damping = 0.995;         // <1.0 = loses energy slowly
-
-  let angle = 0;                 // current angle (radians)
-  let velocity = 0;              // angular velocity
-  let rafId = null;
-
-  function animate() {
-    // θ'' = -(g/L) * sin(θ)  -> we fold g/L into "gravity" constant for visuals
-    velocity += -gravity * Math.sin(angle);
-    angle += velocity;
-    velocity *= damping;
-
-    pendulum.style.transform = `rotate(${angle}rad)`;
-
-    // stop when nearly at rest
-    if (Math.abs(velocity) > 0.0005 || Math.abs(angle) > 0.0005) {
-      rafId = requestAnimationFrame(animate);
-    } else {
-      cancelAnimationFrame(rafId);
-      rafId = null;
-      angle = 0;
-      velocity = 0;
-      pendulum.style.transform = "rotate(0rad)";
-    }
-  }
-
-  function kickFromPointer(clientX) {
-    const rect = pendulum.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-
-    // Normalized horizontal offset: -1 (far left) ... 0 ... +1 (far right)
-    const dxNorm = (clientX - centerX) / (rect.width / 2);
-
-    // Initial angle proportional to opposite of dx (tap left -> swing left first)
-    angle = Math.max(-maxAngle, Math.min(maxAngle, -dxNorm * maxAngle));
-    velocity = 0; // impulse as initial angle; velocity starts at 0
-
-    if (!rafId) {
-      animate();
-    }
-  }
-
-  pendulum.addEventListener("pointerdown", (e) => {
-    pendulum.releasePointerCapture?.(e.pointerId);
-    kickFromPointer(e.clientX);
-  });
-})();
-
-  </script>
 
 </body>
 </html>

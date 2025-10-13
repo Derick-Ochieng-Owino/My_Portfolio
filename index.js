@@ -6,7 +6,7 @@ document.getElementById("hireLink").addEventListener("click", function(event) {
     const top = (window.innerHeight - height) / 2;
 
     window.open(
-        "https://derickowinosportfolio.vercel.app/hire-me", 
+        "https://web-request-beryl.vercel.app/", 
         "PopupWindow",
         `width=${width},height=${height},left=${left},top=${top},scrollbars=yes`
     );

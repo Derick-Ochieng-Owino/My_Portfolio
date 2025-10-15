@@ -3,418 +3,434 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Derick Ochieng | Web Developer</title>
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="index_style.css">
-    <link rel="stylesheet" href="footer.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/43973a2062.js" crossorigin="anonymous"></script>
 </head>
-<body>
-    <nav>
-        <div class="nav-container">
-            <h4 class="logo">Derick <span>Ochieng</span></h4>
-            <ul class="nav_list">
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="#About_Me">ABOUT</a></li>
-                <li><a href="#Contact_Me">CONTACT ME</a></li>
-                <li><a href="#Projects">PROJECTS</a></li>
-                <li><a href="#hire" id="hireLink">HIRE</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-                &#9776;
-            </div>
-        </div>
-    </nav>
-
-    <section class="hero-section">
-        <div class="image-wrapper">
-            <div id="keychain-mount">
-            <div id="keychain-pendulum" class="pendulum" aria-label="Keychain badge">
-                <img src="chain.png" alt="Chain" class="chain" />
-                <div class="tag">
-                <img src="IMG-20250105-WA0065.jpg" alt="Derick Profile" />
-                </div>
-            </div>
-            </div>
-        </div>
-
-        <div class="main-content">
-            <h1 id="title">Hi, I am <span class="highlight" id="name"></span></h1>
-            <p class="hero-text">I am a <span id="roles"></span><br>
-            In need of a website for your company? <br>
-            Let’s turn your site into a sight to behold!!
-            </p>
-            <a href="#Contact_Me"><button><b>Work With Me</b></button></a>
-            <a href="derickcv.pdf" download="Derick_Owino_CV.pdf"><button><b>Download CV PDF</b></button></a>
-            <a href="derickcv.pdf" download="Derick_Owino_CV.pdf"><button><b>Download CV WORD</b></button></a>
-        </div>
-        </section>
-
-
-
-    <section id="About_Me">
-        <h1>ABOUT ME</h1>
-        <div class="description">
-        <p>Hello, I'm Derick Ochieng, a passionate programmer with a strong background in Information Technology specializing in web development. 
-            I specialize in full stack development, and I'm always looking for ways to solve real time problems. With a one year experience in this profession, 
-            I strive to bring creativity and innovation to everything I do.
-        </p>
+<body data-theme="light">
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
     </div>
 
-        <section class="timeline">
-            
-            <div class="timeline-container">
+    <!-- Header with Navigation -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">
+                    <span class="text-gradient">Derick Ochieng</span>
+                </a>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Hi, I'm <span class="text-gradient">Derick Ochieng</span></h1>
+                <p class="hero-subtitle">Web Developer & Problem Solver</p>
+                <p>I create beautiful, functional websites that help businesses grow and succeed online.</p>
                 
-                <!-- Timeline Item 1 -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>2023 - Started Coding</h3>
-                        <p>Discovered HTML & CSS during high school and built my first static webpage.</p>
-                    </div>
-                </div>
-    
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>2024 - Joined Jomo Kenyatta University of Agriculture and Technology</h3>
-                        <p>Started learning C programming and Python in the university, improving problem-solving skills.</p>
-                    </div>
-                </div>
-    
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>2025 - Web Development</h3>
-                        <p>Focused on full-stack web development and cybersecurity while studying at JKUAT.</p>
-                    </div>
-                </div>
-    
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Future - Master Full-Stack & Security</h3>
-                        <p>Striving to become a professional full-stack developer and cybersecurity expert.</p>
-                    </div>
-                </div>
-    
-            </div>
-        </section>
-
-        <div id="skills">
-            <h2>Programming, Database and Markup Languages</h2>
-            
-        </div>
-
-    <div id="container">
-        <div class="cards-container">
-            <div class="card">
-                <div class="img-container">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6935wo8bLZh5FeafJEffqWKDOpNpx6UE5bg&s" alt="HTML Logo">
-                </div>
-                <div class="container">
-                    <h4><b>HTML</b></h4> 
-                    <p>Hypertext Markup Language</p> 
-                    <p>The foundation of web development</p>
-                    <div class="progress-container">
-                        <div class="progress-bar" data-progress="90"></div>
-                    </div>
-                    <div class="progress-text">90%</div>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-laptop-code"></i>
+                        View My Work
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-paper-plane"></i>
+                        Contact Me
+                    </a>
                 </div>
             </div>
             
-            <div class="card">
-                <div class="img-container">
-                    <img src="https://1000logos.net/wp-content/uploads/2020/09/CSS-Logo-2011.png" alt="CSS Logo">
-                </div>
-                <div class="container">
-                    <h4><b>CSS</b></h4> 
-                    <p>Cascading Style Sheets</p> 
-                    <p>Styling the web beautifully</p>
-                    <div class="progress-container">
-                        <div class="progress-bar" data-progress="70"></div>
-                    </div>
-                    <div class="progress-text">70%</div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="img-container">
-                    <img src="https://logos-world.net/wp-content/uploads/2023/02/JavaScript-Logo.png" alt="CSS Logo">
-                </div>
-                <div class="container">
-                    <h4><b>JS</b></h4> 
-                    <p>JavaScript</p> 
-                    <p>Functionality</p>
-                    <div class="progress-container">
-                        <div class="progress-bar" data-progress="10"></div>
-                    </div>
-                    <div class="progress-text">10%</div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="img-container">
-                    <img src="https://i.pinimg.com/564x/1d/be/60/1dbe6034fd59661cfd02d5aa8a79823a.jpg" alt="Python Logo">
-                </div>
-                <div class="progress-circle" data-progress="92"></div>
-                <div class="container">
-                    <h4><b>PYTHON</b></h4> 
-                    <p>Programming Language</p> 
-                    <p>Versatile and powerful</p>
-                    <div class="progress-container">
-                        <div class="progress-bar" data-progress="60"></div>
-                    </div>
-                    <div class="progress-text">60%</div>
-                </div>
-            </div>
-        
-            <div class="card">
-                <div class="img-container">
-                    <img src="https://w7.pngwing.com/pngs/164/57/png-transparent-flask-logos-brands-icon.png" alt="Flask Logo">
-                </div>
-                <div class="container">
-                    <h4><b>FLASK</b></h4> 
-                    <p>Web Framework</p> 
-                    <p>Microframework for Python</p>
-                    <div class="progress-container">
-                        <div class="progress-bar" data-progress="70"></div>
-                    </div>
-                    <div class="progress-text">70%</div>
-                </div>
-            </div>
-        
-            <div class="card">
-                <div class="img-container">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png" alt="C Logo">
-                </div>
-                <div class="container">
-                    <h4><b>C</b></h4> 
-                    <p>Programming Language</p> 
-                    <p>A foundational programming language</p>
-                    <div class="progress-container">
-                        <div class="progress-bar" data-progress="20"></div>
-                    </div>
-                    <div class="progress-text">20%</div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="img-container">
-                    <img src="https://higherlogicdownload.s3.amazonaws.com/IMWUC/UploadedImages/cfb2a2d4-499e-4b64-9020-4a0a629bac9e/IBM_Enterprise_Design_Thinking_-_The_Loop.png" alt="Loop Logo">
-                </div>
-                <div class="container">
-                    <h4><b>Design Thinking</b></h4>
-                    <p>Design Thinking</p>
-                    <p>A foundation for System Analysis</p>
-                    <div class="progress-container">
-                        <div class="progress-bar" data-progress="20"></div>
-                    </div>
-                    <div class="progress-text">20%</div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="img-container">
-                    <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fz5ny4uvx1v49xrkdsa4g.png" alt="Loop Logo">
-                </div>
-                <div class="container">
-                    <h4><b>GIT and GITHUB</b></h4>
-                    <p></p>
-                    <p>Version Control System</p>
-                    <div class="progress-container">
-                        <div class="progress-bar" data-progress="70"></div>
-                    </div>
-                    <div class="progress-text">70%</div>
-                </div>
-            </div>
-
-            <!-- Dart Card -->
-            <div class="card">
-                <div class="img-container">
-                    <img src="https://seeklogo.com/images/D/dart-logo-FDA1939EC4-seeklogo.com.png" alt="Dart Logo">
-                </div>
-                <div class="container">
-                    <h4><b>DART</b></h4> 
-                    <p>Programming Language</p> 
-                    <p>Optimized for Flutter apps</p>
-                    <div class="progress-container">
-                        <div class="progress-bar" data-progress="65"></div>
-                    </div>
-                    <div class="progress-text">65%</div>
-                </div>
-            </div>
-
-            <!-- Flutter Card -->
-            <div class="card">
-                <div class="img-container">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Google-flutter-logo.png" alt="Flutter Logo">
-                </div>
-                <div class="container">
-                    <h4><b>FLUTTER</b></h4> 
-                    <p>Framework</p> 
-                    <p>Cross-platform app development</p>
-                    <div class="progress-container">
-                        <div class="progress-bar" data-progress="70"></div>
-                    </div>
-                    <div class="progress-text">70%</div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="img-container">
-                    <img src="https://cdn.prod.website-files.com/6064b31ff49a2d31e0493af1/66a47686d17c50595ab25075_AD_4nXef8kg1j8Ne3QwQ5VMAVaubMxxFEPvv4gFeYFtVv3S9OQtr9DUgSicnoU2ONDCCwi0wdX7z9So0gE1lLnsvAfzDtGfXYLhsJaLdSCiQU6MEoi0Wapsol5RWbNKBB6hQnIgqtzJ2-zWKrJQMUb2IocBFxK1_.png" alt="Loop Logo">
-                </div>
-                <div class="container">
-                    <h4><b>Postgresql</b></h4>
-                    <p>Dbms</p>
-                    <p>Database Management</p>
-                    <div class="progress-container">
-                        <div class="progress-bar" data-progress="20"></div>
-                    </div>
-                    <div class="progress-text">20%</div>
-                </div>
-            </div>
+            <a href="#about" class="hero-scroll">
+                <i class="fas fa-chevron-down"></i>
+            </a>
         </div>
-    </div>
     </section>
 
-    <section id="Interests">
-        <h1>INTERESTS</h1>
-        <div id="container">
-            <div class="cards-container">
-                <div class="card">
-                        <img src="https://media.istockphoto.com/id/1402655773/vector/chess-icon-set-black-and-linear-vector-eps-10.jpg?s=612x612&w=0&k=20&c=Mb87Xt04AFMgla_Ci6bAt7VuMB0LzHDGvGhjuSTjm9c=" alt="Loop Logo">
+    <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <h2 class="section-title">About <span class="text-gradient">Me</span></h2>
+            <p class="section-subtitle">Get to know the developer behind the code</p>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="IMG-20250105-WA0065.jpg" alt="Derick Ochieng" class="profile-image">
+                </div>
+                
+                <div class="about-text">
+                    <h3>Web Developer & Problem Solver</h3>
+                    <p>
+                        Hello, I'm Derick Ochieng, a passionate programmer with a strong background in Information Technology specializing in web development. 
+                        I specialize in full stack development, and I'm always looking for ways to solve real time problems.
+                    </p>
+                    <p>
+                        With experience in this profession, I strive to bring creativity and innovation to everything I do. 
+                        My journey started in 2023 when I discovered HTML & CSS during high school and built my first static webpage.
+                    </p>
+                    <p>
+                        Currently, I'm focused on full-stack web development while studying at Jomo Kenyatta University of Agriculture and Technology, 
+                        where I'm expanding my knowledge in programming and problem-solving.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills section" id="skills">
+        <div class="container">
+            <h2 class="section-title">My <span class="text-gradient">Skills</span></h2>
+            <p class="section-subtitle">Technologies and tools I work with</p>
+            
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h4><i class="fas fa-code"></i> Frontend Development</h4>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">HTML</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
+                        </div>
+                    </div>
                     
-                    <div class="container">
-                        <h4><b>Playing Chess</b></h4>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">CSS</span>
+                            <span class="skill-percentage">70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="70"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">JavaScript</span>
+                            <span class="skill-percentage">10%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="10"></div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="card">
-                    <img src="https://static.vecteezy.com/system/resources/previews/006/044/496/non_2x/set-of-tennis-logos-emblems-badges-labels-and-design-elements-free-vector.jpg" alt="Loop Logo">
-                    <div class="container">
-                        <h4><b>Playing Tennis</b></h4>
+                
+                <div class="skill-category">
+                    <h4><i class="fas fa-server"></i> Backend Development</h4>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Python</span>
+                            <span class="skill-percentage">60%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="60"></div>
+                        </div>
                     </div>
-                </div> 
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Flask</span>
+                            <span class="skill-percentage">70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="70"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">PostgreSQL</span>
+                            <span class="skill-percentage">20%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="20"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4><i class="fas fa-tools"></i> Other Skills</h4>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">C Programming</span>
+                            <span class="skill-percentage">20%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="20"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Git & GitHub</span>
+                            <span class="skill-percentage">70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="70"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Design Thinking</span>
+                            <span class="skill-percentage">20%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="20"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="Projects">
-        <h1>PROJECTS</h1>
-        <div id="container">
-            <div class="cards-container">
-                <div class="cards">
-                    <div>
-                        <img src="https://media.istockphoto.com/id/1271863211/photo/note-pad-and-pencil.jpg?s=612x612&w=0&k=20&c=_42WbNfiRunbOtXUhmjfcmVd6ieMCM-REGGXdP_2A18=" width="100%" alt="Loop Logo">
+    <!-- Projects Section -->
+    <section class="projects section" id="projects">
+        <div class="container">
+            <h2 class="section-title">My <span class="text-gradient">Projects</span></h2>
+            <p class="section-subtitle">A showcase of my recent work</p>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="To-Do List App">
                     </div>
-                    <div class="container">
-                        <h4><b>TO-DO LIST</b></h4>
-                        <p>Link to project <a href="https://to-do-list-theta-lyart.vercel.app/">Link</a></p>
-                        <p>To do list for storing user information</p>
-                        
+                    <div class="project-content">
+                        <h3 class="project-title">To-Do List App</h3>
+                        <p class="project-description">A simple and intuitive to-do list application for managing daily tasks with local storage functionality.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://to-do-list-theta-lyart.vercel.app/" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="#" target="_blank">
+                                <i class="fab fa-github"></i>
+                                Source Code
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="cards">
-                    <div>
-                        <img src="Furaha Home - Google Chrome 4_4_2025 3_40_05 PM.png" width="100%" alt="Loop Logo">
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="furaha.png" alt="Furaha Community Foundation">
                     </div>
-                    <div class="container">
-                        <h4><b>Furaha Community Foundation</b></h4>
-                        <p>Link to project <a href="https://fcf-sigma.vercel.app/">Link</a></p>
-                        <p>School management system for managing student-teacher info and tracking school progress.</p>
-                        
+                    <div class="project-content">
+                        <h3 class="project-title">Furaha Community Foundation</h3>
+                        <p class="project-description">A website for a community foundation with information about their programs and initiatives.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://fcf-sigma.vercel.app/" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="#" target="_blank">
+                                <i class="fab fa-github"></i>
+                                Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Portfolio Website">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Portfolio Website</h3>
+                        <p class="project-description">A responsive portfolio website to showcase my skills, projects, and contact information.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="#" target="_blank">
+                                <i class="fab fa-github"></i>
+                                Source Code
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-    
-        <footer id="Contact_Me">
+        </div>
+    </section>
 
-                    <footer class="site-footer">
-                        <div class="footer-content">
-                     <div class="footer-left">
-                        <h3 class="heading"><strong>Contact Info:</strong></h3>
-                        <p>Phone: <a href="tel:+254740095168">+254740095168</a></p>
-                        <p>Email: <a href="mailto:example@email.com?subject=Hello&body=Hi there, I wanted to contact you.">derickrevived777@gmail.com</a></p>
-                     </div>
-                
-                     <div class="footer-center">
-                        <h3 class="center-heading"><strong>Derick Owino</strong></h3>
-                        <p>I envision to create sustainable technological web solutions through software development.</p>
-                        
-                        <ul>
-                        
-                            <li class="footer-link">
-                                <a href="#" class="icon-link whatsapp" target="_blank">
-                                    <div class="icon-container">
-                                        <i class="fa-brands fa-whatsapp icon"></i>
-                                    </div>
-                                </a>
-                            </li>
-                            
-                            <li class="footer-link">
-                                <a href="#" class="icon-link twitter" target="_blank">
-                                    <div class="icon-container">
-                                        <i class="fa-brands fa-x-twitter icon"></i>
-                                    </div>
-                                </a>
-                            </li>
-                            
-                            
-                            <li class="footer-link">
-                                <a href="https://github.com/Derick-Ochieng-Owino" class="icon-link github" target="_blank">
-                                    <div class="icon-container">
-                                        <i class="fa-brands fa-github icon"></i>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="https://www.linkedin.com/in/derick-owino123/" class="icon-link linkedin" target="_blank">
-                                    <div class="icon-container">
-                                        <i class="fa-brands fa-linkedin-in icon"></i>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="mailto:derickrevived777@gmail.com" class="icon-link email" target="_blank">
-                                    <div class="icon-container">
-                                        <img src="https://static.dezeen.com/uploads/2020/10/gmail-google-logo-rebrand-workspace-design_dezeen_2364_sq.jpg" alt="Gmail" width="60" height="60" style="border-radius: 50%;">
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-    
-                        <p style="font-size: 20px;">CONTACT ME:</p>
-                        <form action="">
-                            <input type="text" placeholder="Name">
-                            <input type="email" placeholder="Email">
-                            <input type="text" placeholder="Subject">
-                            <input type="text" placeholder="Text"><BR></BR>
-                            <button>SUBMIT</button>
-                        </form>
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In <span class="text-gradient">Touch</span></h2>
+            <p class="section-subtitle">Have a project in mind or want to discuss potential collaboration? Reach out to me!</p>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>Kenya</p>
+                            <p>Available for remote work</p>
+                        </div>
                     </div>
-                
-                    <div class="footer-right">
-                        <p><strong>Quick Links</strong></p>
-                        <ul>
-                            <li><a href="index.html">About</a></li>
-                            <li><a href="#skills">Skills</a></li>
-                            <li><a href="#About_Me">Education</a></li>
-                            <li><a href="#Interests">Interests</a></li>
-                            <li><a href="#Contact">Contact</a></li>
-                
-                        </ul>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <a href="mailto:derickochiengowino@gmail.com">derickochiengowino@gmail.com</a>
+                            <p>I'll respond as soon as possible</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <a href="tel:+254740095168">+254 740 095 168</a>
+                            <p>Available for calls and WhatsApp</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Social Media</h3>
+                            <p>Connect with me on these platforms</p>
+                            <div class="social-links">
+                                <a href="https://github.com/Derick-Ochieng-Owino" class="social-link" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/derick-owino123/" class="social-link" target="_blank">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-link" target="_blank">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                    <hr class="footer-line" >
-                    <p class="copyright">© 2025 Software Solutions. All rights reserved.</p>
-                  </footer>
-        </footer>
-        
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="index.js"></script>
+                
+                <div class="contact-form">
+                    <form action="https://formspree.io/f/mjvnewjg" method="POST" id="contact-form">
+                        <input type="hidden" name="_subject" value="New Message From Portfolio">
+                        
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary form-submit">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="footer-logo text-gradient">Derick Ochieng</a>
+                <p class="footer-text">
+                    Creating beautiful, functional websites that help businesses grow and succeed online.
+                </p>
+                
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="https://github.com/Derick-Ochieng-Owino" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/derick-owino123/" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="mailto:derickochiengowino@gmail.com">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                
+                <p class="footer-copyright">
+                    &copy; <span id="year"></span> <span class="text-gradient">Derick Ochieng</span>. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

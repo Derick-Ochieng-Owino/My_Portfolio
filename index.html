@@ -11,30 +11,6 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-
-    <script src="three.r134.min.js"></script>
-    <script src="vanta.net.min.js"></script>
-    <script>
-    VANTA.NET({
-    el: "#home",    // OR ".hero"
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    minHeight: 200.00,
-    minWidth: 200.00,
-    scale: 1.00,
-    scaleMobile: 1.00,
-    color: 0x28F0C8,         // Neon Aqua
-    backgroundColor: 0x0A0F1F, // Deep Navy Black
-    points: 10,
-    maxDistance: 20,
-    spacing: 15
-})
-
-    </script>
 </head>
 <body data-theme="light">
     <!-- Theme Toggle -->
@@ -562,6 +538,30 @@
             </div>
         </div>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+<script>
+VANTA.NET({
+  el: "#home",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  
+  // Your Cyber Neon colors
+  color: 0x28F0C8,
+  backgroundColor: 0x0A0F1F,
+  
+  // Your custom settings
+  points: 10,
+  maxDistance: 20,
+  spacing: 15
+})
+</script>
 
     <script src="script.js"></script>
 </body>

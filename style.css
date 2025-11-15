@@ -1,4 +1,3 @@
-/* CSS Variables for Light Mode */
 :root {
     --primary-color: #4CCBC0;      /* soft aqua, not bright */
     --secondary-color: #A98BE0;    /* soft purple, pastel version */ 
@@ -11,8 +10,6 @@
     --transition: all 0.3s ease;
 }
 
-
-/* CSS Variables for Dark Mode */
 [data-theme="dark"] {
     --primary-color: #28F0C8;      /* neon aqua */
     --secondary-color: #B35FFF;    /* neon purple */ 
@@ -24,8 +21,6 @@
     --shadow: 0 4px 20px rgba(40, 240, 200, 0.15); /* neon glow shadow */
 }
 
-
-/* Reset & Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -114,7 +109,6 @@ section {
     transform: translateY(-3px);
 }
 
-/* Theme Toggle */
 .theme-toggle {
     position: fixed;
     top: 20px;

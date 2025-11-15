@@ -19,16 +19,17 @@ themeToggle.addEventListener('click', () => {
 
 // Mobile Navigation Toggle
 const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
+const navMenu = document.getElementById('navLinks');
 
 hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+    navMenu.classList.toggle('active');
 });
 
 // Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-links a').forEach(link => {
+const navAnchors = document.querySelectorAll('.nav-links a'); // renamed
+navAnchors.forEach(link => {
     link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
+        navMenu.classList.remove('active');
     });
 });
 
@@ -112,3 +113,30 @@ function toggleInspection() {
     window.inspectEnabled = !window.inspectEnabled;
     alert(window.inspectEnabled ? "Inspection temporarily enabled" : "🔒 Inspection disabled again");
 }
+
+// Scroll Spy using IntersectionObserver
+const sections = document.querySelectorAll("section[id]");
+const navLinksObserver = document.querySelectorAll("nav a"); // renamed
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute("id");
+      const navLink = document.querySelector(`nav a[href="#${id}"]`);
+
+      if (entry.isIntersecting) {
+        navLinksObserver.forEach(link => link.classList.remove("active"));
+        navLink.classList.add("active");
+      }
+    });
+  },
+  {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.6
+  }
+);
+
+sections.forEach(section => {
+  observer.observe(section);
+});

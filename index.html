@@ -1,568 +1,775 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Derick Ochieng | Web Developer</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Derick Owino · Software & Systems Engineer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --accent-crimson: #dc143c;
+      --accent-magenta: #c850c0;
+      --accent-glow: rgba(220, 20, 60, 0.25);
+      
+      /* Dark Theme */
+      --bg-main: #0c1017;
+      --bg-surface: #141a24;
+      --bg-card: #1c2432;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --text-main: #f0f4f8;
+      --text-muted: #8c9ba5;
+      --nav-bg: rgba(12, 16, 23, 0.85);
+      --img-filter: grayscale(100%) contrast(110%);
+    }
+
+    [data-theme="light"] {
+  --bg-main: #e8dfd4;                 /* warm beige background */
+  --bg-surface: #f4ede4;              /* cream surface */
+  --bg-card: #d9c9b6;                 /* sand beige card */
+  --border-color: rgba(92, 73, 58, 0.16);
+  --text-main: #2f2722;               /* rich espresso brown */
+  --text-muted: #6f6258;              /* warm taupe */
+  --nav-bg: rgba(232, 223, 212, 0.92);
+  --img-filter: saturate(96%) contrast(102%) brightness(100%);
+}
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Sticky Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      position: sticky;
+      top: 0;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      border-bottom: 1px solid var(--border-color);
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    /* Circular Photo Icon in Navbar Top Left */
+    .nav-profile-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent-crimson);
+    }
+
+    /* Name in Middle */
+    .nav-title-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.5px;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text-main); }
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    .nav-right-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Circular Theme Switcher Icon Button */
+    .theme-toggle-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+    .theme-toggle-btn:hover {
+      border-color: var(--accent-crimson);
+      color: var(--accent-crimson);
+      transform: scale(1.05);
+    }
+
+    /* Hamburger Menu Button */
+    .hamburger-btn {
+      display: none;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .hamburger-btn:hover {
+      border-color: var(--accent-crimson);
+      color: var(--accent-crimson);
+    }
+
+    .hero-container {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      min-height: 85vh;
+      align-items: center;
+      position: relative;
+      padding: 0 48px;
+    }
+
+    .vertical-tag {
+      position: absolute;
+      left: 16px;
+      top: 20%;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .vertical-year {
+      position: absolute;
+      left: 16px;
+      bottom: 10%;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .hero-left {
+      padding-left: 32px;
+      padding-right: 20px;
+    }
+
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 5.8rem;
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -2px;
+      margin-bottom: 16px;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+    .scroll-down {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .scroll-down:hover { color: var(--accent-crimson); }
+
+    .hero-right {
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .hero-portrait {
+      max-width: 100%;
+      max-height: 78vh;
+      object-fit: cover;
+      filter: var(--img-filter);
+      transition: filter 0.3s;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section { padding: 90px 0; }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 32px;
+      letter-spacing: -0.5px;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 16px;
+    }
+
+    .journey-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .journey-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 24px 32px;
+      display: grid;
+      grid-template-columns: 2fr 2fr 1fr;
+      align-items: center;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .journey-item:hover {
+      border-color: var(--accent-crimson);
+      transform: translateX(4px);
+    }
+    .journey-role { font-weight: 600; font-size: 1rem; }
+    .journey-desc { font-size: 0.9rem; color: var(--text-muted); }
+    .journey-pill {
+      font-size: 0.75rem;
+      padding: 6px 14px;
+      background: var(--bg-card);
+      border-radius: 20px;
+      color: var(--text-muted);
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .skill-card {
+      background: var(--bg-surface);
+      padding: 28px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .skill-card h4 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.05rem;
+      margin-bottom: 20px;
+    }
+    .skill-card h4 i { color: var(--accent-crimson); }
+    .skill-row { margin-bottom: 14px; }
+    .skill-row .label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .bar {
+      height: 5px;
+      background: var(--bg-card);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .bar .fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-crimson), var(--accent-magenta));
+    }
+
+    /* Works Grid Cards */
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .work-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      overflow: hidden;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .work-card:hover {
+      border-color: var(--accent-crimson);
+      transform: translateY(-4px);
+    }
+    .work-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .work-card-body { padding: 20px; flex-grow: 1; }
+    .work-card-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; }
+    .work-card-sub { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; margin-bottom: 16px; }
+
+    /* Action Buttons on Cards */
+    .card-actions {
+      padding: 0 20px 20px 20px;
+      display: flex;
+      gap: 10px;
+    }
+    .card-btn {
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .card-btn-primary {
+      background: var(--accent-crimson);
+      color: #ffffff;
+    }
+    .card-btn-primary:hover { background: #b01030; }
+    .card-btn-outline {
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      background: transparent;
+    }
+    .card-btn-outline:hover {
+      border-color: var(--accent-crimson);
+      color: var(--accent-crimson);
+    }
+
+    .banner-callout {
+      margin: 60px 0;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      padding: 56px;
+      text-align: center;
+      border-radius: 8px;
+    }
+    .banner-callout h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+    .btn-crimson {
+      display: inline-block;
+      background: var(--accent-crimson);
+      color: #ffffff;
+      padding: 14px 32px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-crimson:hover {
+      background: #b01030;
+      transform: translateY(-2px);
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 40px;
+    }
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .contact-item i {
+      font-size: 1.2rem;
+      color: var(--accent-crimson);
+      width: 24px;
+      margin-top: 4px;
+    }
+    .contact-item a, .contact-item p {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .form-control {
+      width: 100%;
+      padding: 14px 18px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent-crimson);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    textarea.form-control { min-height: 120px; resize: vertical; }
+
+    .footer {
+      border-top: 1px solid var(--border-color);
+      padding: 40px 0;
+      text-align: center;
+      margin-top: 60px;
+    }
+    .footer p { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* Responsive Mobile CSS Breakpoints */
+    @media (max-width: 900px) {
+      .navbar { padding: 12px 16px; }
+      .hamburger-btn { display: flex; }
+      
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background: var(--bg-surface);
+        padding: 20px;
+        border-bottom: 1px solid var(--border-color);
+        gap: 16px;
+      }
+      .nav-links.active { display: flex; }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        padding: 40px 16px;
+        text-align: center;
+        min-height: auto;
+      }
+      .hero-left { padding: 0; }
+      .hero-sub { justify-content: center; }
+      .hero-title { font-size: 3.2rem; }
+      .hero-portrait { max-height: 40vh; margin: 20px auto 0; }
+      .vertical-tag, .vertical-year { display: none; }
+      
+      .contact-wrap, .works-grid { grid-template-columns: 1fr; }
+      .journey-item { grid-template-columns: 1fr; gap: 8px; padding: 16px; }
+      .banner-callout { padding: 32px 16px; }
+      .banner-callout h3 { font-size: 1.6rem; }
+      .card-actions { flex-direction: column; }
+    }
+  </style>
 </head>
-<body data-theme="light">
-    <!-- Theme Toggle -->
-    <div class="theme-toggle" id="themeToggle">
+<body>
+
+  <!-- Sticky Navbar -->
+  <nav class="navbar">
+    <!-- Top Left Circular Avatar Photo -->
+    <a href="#" class="nav-brand">
+      <img src="imagebright-removebg-preview.png" alt="Derick Owino" class="nav-profile-avatar" />
+    </a>
+
+    <!-- Name in Middle -->
+    <span class="nav-title-name">Derick Owino</span>
+
+    <!-- Navigation Menu Links -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#works">Works</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <!-- Top Right Circular Theme Switcher & Hamburger Toggle -->
+    <div class="nav-right-actions">
+      <button class="theme-toggle-btn" id="themeToggle" title="Toggle Light/Dark Theme">
         <i class="fas fa-sun"></i>
-        <i class="fas fa-moon"></i>
+      </button>
+      <button class="hamburger-btn" id="hamburgerToggle" title="Toggle Navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <section class="hero-container">
+    <span class="vertical-tag">Full-Stack & Systems Developer</span>
+    <span class="vertical-year">2026</span>
+
+    <div class="hero-left">
+      <!-- 
+        COMMENTED OUT METRICS:
+        <div class="hero-stats">
+          <div>
+            <div class="stat-number"><span>+</span>4</div>
+            <div class="stat-label">Core Systems Built</div>
+          </div>
+          <div>
+            <div class="stat-number"><span>+</span>10</div>
+            <div class="stat-label">Companies / Clients</div>
+          </div>
+        </div>
+      -->
+
+      <h1 class="hero-title">Hello</h1>
+      <p class="hero-sub">— I'm Derick Owino, Software & Systems Engineer</p>
+
+      <a href="#about" class="scroll-down">Scroll down <i class="fas fa-arrow-down"></i></a>
     </div>
 
-    <!-- Header with Navigation -->
-    <header class="header" id="header">
-        <div class="container">
-            <nav class="nav">
-                <a href="#" class="logo">
-                    <span class="text-gradient">Derick Ochieng</span>
-                </a>
+    <div class="hero-right">
+      <img src="imagebright-removebg-preview.png" alt="Derick Owino" class="hero-portrait" />
+    </div>
+  </section>
 
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+  <div class="container">
 
-                <button class="hamburger" id="hamburger">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </nav>
+    <section class="section" id="about">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-text">
+        <p>I am a full-stack software engineer and IT student at JKUAT with expertise spanning mobile app development (Flutter), web backends (Python/Django & Flask, Laravel), and system architecture.</p>
+        <p>Beyond traditional web and mobile development, I bring hands-on experience in network infrastructure configuration (VLANs, OSPF, Ubiquiti bridging) and secure academic automation systems.</p>
+      </div>
+
+      <!-- 
+        COMMENTED OUT PERFORMANCE METRIC SYSTEM:
+        <div class="stat-card-large">
+          <div class="percent">100%</div>
+          <p>System Architecture & Clean Code Execution</p>
         </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Hi, I'm <span class="text-gradient">Derick Ochieng</span></h1>
-                <p class="hero-subtitle">Web Developer & Problem Solver</p>
-                <p>I create beautiful, functional websites that help businesses grow and succeed online.</p>
-                
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">
-                        <i class="fas fa-laptop-code"></i>
-                        View My Work
-                    </a>
-                    <a href="https://web-request-beryl.vercel.app" target="_blank" class="btn btn-primary">
-                        <i class="fas fa-laptop-code"></i>
-                        Get Your Own Website
-                    </a>
-                    <a href="#contact" class="btn btn-outline">
-                        <i class="fas fa-paper-plane"></i>
-                        Contact Me
-                    </a>
-                </div>
-            </div>
-            
-            <a href="#about" class="hero-scroll">
-                <i class="fas fa-chevron-down"></i>
-            </a>
-        </div>
+      -->
     </section>
 
-    <!-- About Section -->
-    <section class="about section" id="about">
-        <div class="container">
-            <h2 class="section-title">About <span class="text-gradient">Me</span></h2>
-            <p class="section-subtitle">Get to know the developer behind the code</p>
-            
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="IMG-20250105-WA0065.jpg" alt="Derick Ochieng" class="profile-image">
-                </div>
-                
-                <div class="about-text">
-                    <h3>Web Developer & Problem Solver</h3>
-                    <p>
-                        Hello, I'm Derick Ochieng, a passionate programmer with a strong background in Information Technology specializing in web development. 
-                        I specialize in full stack development, and I'm always looking for ways to solve real time problems.
-                    </p>
-                    <p>
-                        With experience in this profession, I strive to bring creativity and innovation to everything I do. 
-                        My journey started in 2023 when I discovered HTML & CSS during high school and built my first static webpage.
-                    </p>
-                    <p>
-                        Currently, I'm focused on full-stack web development while studying at Jomo Kenyatta University of Agriculture and Technology, 
-                        where I'm expanding my knowledge in programming and problem-solving.
-                    </p>
-                </div>
-            </div>
+    <section class="section" id="journey">
+      <h2 class="section-title">Explore My Journey</h2>
+      <div class="journey-list">
+        <div class="journey-item">
+          <div class="journey-role">Academic System Automation</div>
+          <div class="journey-desc">WhatsApp-First Grading & Validation Workflows</div>
+          <div class="journey-pill">Python / CSV Parsing</div>
         </div>
+        <div class="journey-item">
+          <div class="journey-role">Cross-Platform Mobile Apps</div>
+          <div class="journey-desc">Alma Mater & Africulture Platforms</div>
+          <div class="journey-pill">Flutter / Firestore</div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-role">Full-Stack Web Engineering</div>
+          <div class="journey-desc">Matwana Transit & Furaha Portal</div>
+          <div class="journey-pill">Django / Flask</div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-role">Network Systems & Bridging</div>
+          <div class="journey-desc">eNSP Topologies & Ubiquiti M5 Configuration</div>
+          <div class="journey-pill">VLAN / OSPF</div>
+        </div>
+      </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="skills section" id="skills">
-        <div class="container">
-            <h2 class="section-title">My <span class="text-gradient">Skills</span></h2>
-            <p class="section-subtitle">Technologies and tools I work with</p>
-            
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h4><i class="fas fa-code"></i> Frontend Development</h4>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">HTML</span>
-                            <span class="skill-percentage">90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="90"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">CSS</span>
-                            <span class="skill-percentage">70%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="70"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">JavaScript</span>
-                            <span class="skill-percentage">10%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="10"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h4><i class="fas fa-server"></i> Backend Development</h4>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">Python</span>
-                            <span class="skill-percentage">60%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="60"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">Flask</span>
-                            <span class="skill-percentage">70%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="70"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">PostgreSQL</span>
-                            <span class="skill-percentage">20%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="20"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h4><i class="fas fa-tools"></i> Other Skills</h4>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">C Programming</span>
-                            <span class="skill-percentage">20%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="20"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">Git & GitHub</span>
-                            <span class="skill-percentage">70%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="70"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">Design Thinking</span>
-                            <span class="skill-percentage">20%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="20"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h4><i class="fas fa-tools"></i>App Development</h4>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">Dart Programming</span>
-                            <span class="skill-percentage">70%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="70"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">Flutter</span>
-                            <span class="skill-percentage">70%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="70"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h4><i class="fas fa-tools"></i>Web App Development</h4>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">PHP - Laravel</span>
-                            <span class="skill-percentage">70%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="70"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">Tailwind</span>
-                            <span class="skill-percentage">70%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="70"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="section" id="skills">
+      <h2 class="section-title">Tech Stack</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h4><i class="fas fa-mobile-alt"></i> Mobile & Frontend</h4>
+          <div class="skill-row"><div class="label"><span>Flutter / Dart</span><span>85%</span></div><div class="bar"><div class="fill" style="width:85%"></div></div></div>
+          <div class="skill-row"><div class="label"><span>HTML / CSS / JS</span><span>80%</span></div><div class="bar"><div class="fill" style="width:80%"></div></div></div>
         </div>
+        <div class="skill-card">
+          <h4><i class="fas fa-server"></i> Backend & DB</h4>
+          <div class="skill-row"><div class="label"><span>Python / Django / Flask</span><span>80%</span></div><div class="bar"><div class="fill" style="width:80%"></div></div></div>
+          <div class="skill-row"><div class="label"><span>SQLAlchemy / Firestore</span><span>75%</span></div><div class="bar"><div class="fill" style="width:75%"></div></div></div>
+        </div>
+        <div class="skill-card">
+          <h4><i class="fas fa-network-wired"></i> Networks & Tools</h4>
+          <div class="skill-row"><div class="label"><span>VLAN / OSPF Routing</span><span>70%</span></div><div class="bar"><div class="fill" style="width:70%"></div></div></div>
+          <div class="skill-row"><div class="label"><span>Git / Vercel / Firebase CLI</span><span>80%</span></div><div class="bar"><div class="fill" style="width:80%"></div></div></div>
+        </div>
+      </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="projects section" id="projects">
-        <div class="container">
-            <h2 class="section-title">My <span class="text-gradient">Projects</span></h2>
-            <p class="section-subtitle">A showcase of my recent work</p>
-            
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://media.istockphoto.com/id/1271863211/photo/note-pad-and-pencil.jpg?s=612x612&w=0&k=20&c=_42WbNfiRunbOtXUhmjfcmVd6ieMCM-REGGXdP_2A18=" alt="To-Do List App">
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">To-Do List App</h3>
-                        <p class="project-description">A simple and intuitive to-do list application for managing daily tasks with local storage functionality.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">HTML</span>
-                            <span class="project-tag">CSS</span>
-                            <span class="project-tag">JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://to-do-list-theta-lyart.vercel.app/" target="_blank">
-                                <i class="fas fa-external-link-alt"></i>
-                                Live Demo
-                            </a>
-                            <a href="#" target="_blank">
-                                <i class="fab fa-github"></i>
-                                Source Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="furaha.png" alt="Furaha Community Foundation">
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Furaha Community Foundation</h3>
-                        <p class="project-description">A website for a community foundation with information about their programs and initiatives.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">HTML</span>
-                            <span class="project-tag">CSS</span>
-                            <span class="project-tag">JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://fcf-sigma.vercel.app/" target="_blank">
-                                <i class="fas fa-external-link-alt"></i>
-                                Live Demo
-                            </a>
-                            <a href="#" target="_blank">
-                                <i class="fab fa-github"></i>
-                                Source Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Portfolio Website">
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Portfolio Website</h3>
-                        <p class="project-description">A responsive portfolio website to showcase my skills, projects, and contact information.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">HTML</span>
-                            <span class="project-tag">CSS</span>
-                            <span class="project-tag">JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank">
-                                <i class="fas fa-external-link-alt"></i>
-                                Live Demo
-                            </a>
-                            <a href="#" target="_blank">
-                                <i class="fab fa-github"></i>
-                                Source Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
+    <div class="banner-callout">
+      <h3>Got a Vision? Let's Bring It To Life!</h3>
+      <a href="#contact" class="btn-crimson">Get A Free Consultation</a>
+    </div>
 
-                <!-- Project 1: Africulture App -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://www.fao.org/uploads/pics/03-25-2013irrigation_news_featured.jpg" alt="Africulture App">
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Africulture App</h3>
-                        <p class="project-description">
-                            A smart farming mobile and web platform built with Flutter & Firebase, integrating weather forecasting, IoT device control, community forums, and admin dashboards — designed to support modern African agriculture.
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">Flutter</span>
-                            <span class="project-tag">Dart</span>
-                            <span class="project-tag">Firebase</span>
-                            <span class="project-tag">OpenWeather API</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://africulture.vercel.app" target="_blank">
-                                <i class="fas fa-external-link-alt"></i>
-                                Live Demo
-                            </a>
-                            <a href="https://github.com/yourusername/africulture-app" target="_blank">
-                                <i class="fab fa-github"></i>
-                                Source Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2: Besame App -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqYH9oh5HnpEX8X3kIroUw2QnBn11PMp2KkA&s" alt="Besame App">
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Besame App</h3>
-                        <p class="project-description">
-                            A cross-platform Flutter app built to streamline beauty and wellness services, featuring real-time booking, customer profiles, notifications, and secure authentication.
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">Flutter</span>
-                            <span class="project-tag">Dart</span>
-                            <span class="project-tag">Firebase Auth</span>
-                            <span class="project-tag">Cloud Firestore</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank">
-                                <i class="fas fa-external-link-alt"></i>
-                                Live Demo
-                            </a>
-                            <a href="https://github.com/yourusername/besame-app" target="_blank">
-                                <i class="fab fa-github"></i>
-                                Source Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="section" id="works">
+      <h2 class="section-title">Featured Works</h2>
+      <div class="works-grid">
+        <div class="work-card">
+          <img src="https://media.istockphoto.com/id/1271863211/photo/note-pad-and-pencil.jpg?s=612x612&w=0&k=20&c=_42WbNfiRunbOtXUhmjfcmVd6ieMCM-REGGXdP_2A18=" alt="WhatsApp Academic Portal" />
+          <div class="work-card-body">
+            <div class="work-card-title">WhatsApp University Portal</div>
+            <div class="work-card-sub">Automated grade validation, CSV/XLSX record parsing, and academic workflows via WhatsApp integration.</div>
+          </div>
+          <div class="card-actions">
+            <a href="#" class="card-btn card-btn-primary"><i class="fas fa-external-link-alt"></i> Visit Project</a>
+            <a href="#" class="card-btn card-btn-outline"><i class="fab fa-github"></i> View Code</a>
+          </div>
         </div>
+
+        <div class="work-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqYH9oh5HnpEX8X3kIroUw2QnBn11PMp2KkA&s" alt="Alma Mater App" />
+          <div class="work-card-body">
+            <div class="work-card-title">Alma Mater Campus App</div>
+            <div class="work-card-sub">Flutter networking app featuring JKUAT domain verification, real-time group chats, and Firebase integration.</div>
+          </div>
+          <div class="card-actions">
+            <a href="#" class="card-btn card-btn-primary"><i class="fas fa-external-link-alt"></i> Visit Project</a>
+            <a href="#" class="card-btn card-btn-outline"><i class="fab fa-github"></i> View Code</a>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <img src="https://www.fao.org/uploads/pics/03-25-2013irrigation_news_featured.jpg" alt="Africulture Platform" />
+          <div class="work-card-body">
+            <div class="work-card-title">Africulture Smart Platform</div>
+            <div class="work-card-sub">Smart farming mobile suite with weather API integration, community forums, and IoT device telemetry.</div>
+          </div>
+          <div class="card-actions">
+            <a href="https://africulture.vercel.app" target="_blank" class="card-btn card-btn-primary"><i class="fas fa-external-link-alt"></i> Visit Project</a>
+            <a href="#" class="card-btn card-btn-outline"><i class="fab fa-github"></i> View Code</a>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <img src="furaha.png" alt="Matwana Transit" />
+          <div class="work-card-body">
+            <div class="work-card-title">Matwana Transit System</div>
+            <div class="work-card-sub">Django backend featuring multi-role user dashboards, route management schemas, and passenger tracking APIs.</div>
+          </div>
+          <div class="card-actions">
+            <a href="#" class="card-btn card-btn-primary"><i class="fas fa-external-link-alt"></i> Visit Project</a>
+            <a href="#" class="card-btn card-btn-outline"><i class="fab fa-github"></i> View Code</a>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact section" id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In <span class="text-gradient">Touch</span></h2>
-            <p class="section-subtitle">Have a project in mind or want to discuss potential collaboration? Reach out to me!</p>
-            
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Location</h3>
-                            <p>Kenya</p>
-                            <p>Available for remote work</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <a href="mailto:derickochiengowino@gmail.com">derickochiengowino@gmail.com</a>
-                            <p>I'll respond as soon as possible</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Phone</h3>
-                            <a href="tel:+254740095168">+254 740 095 168</a>
-                            <p>Available for calls and WhatsApp</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-share-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Social Media</h3>
-                            <p>Connect with me on these platforms</p>
-                            <div class="social-links">
-                                <a href="https://github.com/Derick-Ochieng-Owino" class="social-link" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/in/derick-owino123/" class="social-link" target="_blank">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a href="#" class="social-link" target="_blank">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <form action="https://formspree.io/f/mjvnewjg" method="POST" id="contact-form">
-                        <input type="hidden" name="_subject" value="New Message From Portfolio">
-                        
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea id="message" name="message" class="form-control" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary form-submit">
-                            <i class="fas fa-paper-plane"></i>
-                            Send Message
-                        </button>
-                    </form>
-                </div>
+    <section class="section" id="contact">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-wrap">
+        <div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <p>Email</p>
+              <a href="mailto:derickochiengowino@gmail.com">derickochiengowino@gmail.com</a>
             </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <div>
+              <p>Phone</p>
+              <a href="tel:+254740095168">+254 740 095 168</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <p>Location</p>
+              <p>Kenya · Remote</p>
+            </div>
+          </div>
         </div>
+        <form action="https://formspree.io/f/mjvnewjg" method="POST">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea name="message" class="form-control" required></textarea>
+          </div>
+          <button type="submit" class="btn-crimson">Send Message</button>
+        </form>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <a href="#" class="footer-logo text-gradient">Derick Ochieng</a>
-                <p class="footer-text">
-                    Creating beautiful, functional websites that help businesses grow and succeed online.
-                </p>
-                
-                <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                
-                <div class="footer-social">
-                    <a href="https://github.com/Derick-Ochieng-Owino" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/derick-owino123/" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="#" target="_blank">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="mailto:derickochiengowino@gmail.com">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-                
-                <p class="footer-copyright">
-                    &copy; <span id="year"></span> <span class="text-gradient">Derick Ochieng</span>. All Rights Reserved.
-                </p>
-            </div>
-        </div>
-    </footer>
+  </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-<script>
-VANTA.NET({
-  el: "#home",
-  mouseControls: true,
-  touchControls: true,
-  gyroControls: false,
-  minHeight: 200.00,
-  minWidth: 200.00,
-  scale: 1.00,
-  scaleMobile: 1.00,
-  
-  // Your Cyber Neon colors
-  color: 0x28F0C8,
-  backgroundColor: 0x0A0F1F,
-  
-  // Your custom settings
-  points: 10,
-  maxDistance: 20,
-  spacing: 15
-})
-</script>
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Derick Owino. Built with passion & precision.</p>
+    </div>
+  </footer>
 
-    <script src="script.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Light / Dark Theme Toggle Logic
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeIcon = themeToggleBtn.querySelector('i');
+
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      
+      if (newTheme === 'light') {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+      } else {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      }
+    });
+
+    // Mobile Navigation Hamburger Toggle Logic
+    const hamburgerToggle = document.getElementById('hamburgerToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburgerToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking a navigation link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+  </script>
 </body>
 </html>
